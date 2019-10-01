@@ -13,7 +13,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" th:href="@{/}">Spring Zuul</a>
     </div>
-    
+
   </div><!-- /.container-fluid -->
 </nav>
 
@@ -28,11 +28,12 @@ var app = angular.module('myApp', ["ngResource"]);
 app.controller('mainCtrl', function($scope,$resource,$http) {
     $scope.foo = {id:0 , name:"sample foo"};
     $scope.foos = $resource("/foos/:fooId",{fooId:'@id'});
-    
+
     $scope.getFoo = function(){
+        alert(fooId:$scope.foo.id);
         $scope.foo = $scope.foos.get({fooId:$scope.foo.id});
     }
-    
+
 });
 /*]]>*/
 </script>
@@ -43,12 +44,12 @@ app.controller('mainCtrl', function($scope,$resource,$http) {
 		<label class="col-sm-3">ID</label>
 		<span>{{foo.id}}</span>
 	</div>
-	
+
 	<div class="col-sm-12">
 	<label class="col-sm-3">Name</label>
 	<span>{{foo.name}}</span>
 	</div>
-	
+
 	<div class="col-sm-12">
 	<a class="btn btn-default" href="#" ng-click="getFoo()">New Foo</a>
 	</div>
